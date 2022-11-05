@@ -1,0 +1,26 @@
+{% extends 'inventoryapp/base.html' %}
+{% block content %}
+<h1>Create Sales</h1>
+<a href="{% url 'sales' %}" class="button" style="margin-left: 40px;">Go Back</a>
+  <div class="section-delete">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label>Branch: </label>
+      {{form.branch}}
+      <label>Product Name: </label>
+      {{form.prod_name}}
+      <label>Quantity: </label>
+      {{form.quantity}}
+      <label>Customer: </label>
+      {{form.customer}}
+      <label>Mode of Payment: </label>
+      {{form.mop}}
+      <label>Amount: </label>
+      {{form.amount}}
+      <div class="btn-flex">
+        <button type="submit" class="btn">Add Sales</button>
+        <button type="reset" class="btn">Reset</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
