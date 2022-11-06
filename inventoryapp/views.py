@@ -6,6 +6,22 @@ from django.contrib import messages
 from .models import *
 from .forms import *
 
+def Register(request):
+    if request.user.is_authenticated:
+        return redirect("index")
+    else:
+        form = CreateUserForm()
+        if request.method == "POST":
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get("username")
+                messages.success(request, "Account Created For " + user)
+                return redirect("login")
+
+    context = {"register": form}
+    return render(request, "inventoryapp/register.html", context)
+
 def Login(request):
     if request.user.is_authenticated:
         return redirect("inventory")
@@ -26,7 +42,7 @@ def Login(request):
 
 def Logout(request):
     logout(request)
-    return redirect("login")
+    return redirect("index")
 
 def index(request):
     context = {}

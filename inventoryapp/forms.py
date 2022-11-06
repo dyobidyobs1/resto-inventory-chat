@@ -14,3 +14,8 @@ class SalesForm(forms.ModelForm):
     class Meta:
         model = DailySales
         fields = "__all__"
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
