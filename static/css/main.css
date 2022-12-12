@@ -155,3 +155,207 @@ a {
     color: #585858;
     margin: 10px 0;
   }
+
+
+/* Login */
+  
+
+.wrapper {
+  background: #263030;
+  background: -webkit-linear-gradient(top left,#50a3a2 0%,#53e3a6 100%);
+  background: -moz-linear-gradient(top left,#50a3a2 0%,#53e3a6 100%);
+  background: -o-linear-gradient(top left,#50a3a2 0%,#53e3a6 100%);
+  background: linear-gradient(to bottom right,#50a3a2 0%,#53e3a6 100%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  margin-top: -200px;
+  overflow: hidden;
+}
+.wrapper.form-success .container h1 {
+  transform: translateY(85px);
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+  height: 200px;
+  text-align: center;
+}
+.container h1 {
+  font-size: 40px;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-put;
+  font-weight: 200;
+}
+form {
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+form input {
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(23, 22, 22, 0.4);
+  background-color: rgba(23, 22, 22, 0.4);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+form input:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+form input:focus {
+  background-color: rgb(134, 124, 124);
+  width: 300px;
+  color: rgb(255, 255, 255);
+}
+form button {
+  appearance: none;
+  outline: 0;
+  background-color: rgb(0, 0, 0);
+  border: 0;
+  padding: 10px 15px;
+  color: #ffffff;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+}
+form button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+form .button-register {
+  appearance: none;
+  outline: 0;
+  background-color: rgb(0, 0, 0);
+  border: 0;
+  padding: 10px 15px;
+  color: #ffffff;
+  border-radius: 3px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+}
+form .button-register:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.container .button-link {
+  appearance: none;
+  outline: 0;
+  background-color: rgb(0, 0, 0);
+  border: 0;
+  padding: 5px 10px;
+  color: #ffffff;
+  border-radius: 3px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 15px;
+  transition-duration: 0.25s;
+}
+.container .button-link:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.container-table .button-link,
+.tb-res .button-link {
+  appearance: none;
+  outline: 0;
+  background-color: rgb(0, 0, 0);
+  border: 0;
+  padding: 5px 10px;
+  color: #ffffff;
+  border-radius: 3px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 15px;
+  transition-duration: 0.25s;
+}
+.container-table .button-link:hover,
+.tb-res .button-link:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+form select {
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(23, 22, 22, 0.4);
+  background-color: rgba(23, 22, 22, 0.4);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+form select:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+form select:focus {
+  background-color: rgb(134, 124, 124);
+  width: 300px;
+  color: rgb(255, 255, 255);
+}
+
+/* Table */
+.container-table {
+  max-width: 600px;
+  margin: auto;
+  padding: 50px 0;
+  height: 200px;
+  text-align: center;
+}
+
+
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}

@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:restorant_inventory}/db.sqlite3",
+      "name": "tes"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

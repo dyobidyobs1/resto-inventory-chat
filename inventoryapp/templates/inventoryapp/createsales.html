@@ -1,13 +1,14 @@
 {% extends 'inventoryapp/base.html' %}
 {% block content %}
+<div class="container">
 <h1>Create Sales</h1>
-<a href="{% url 'sales' %}" class="button" style="margin-left: 40px;">Go Back</a>
+<!-- <a href="{% url 'sales' %}" class="button" style="margin-left: 40px;">Go Back</a> -->
   <div class="section-delete">
     <form action="" method="POST">
       {% csrf_token %}
       <label>Branch: </label>
       {{form.branch}}
-      <label>Product Name: </label>
+      <label>Food Name: </label>
       {{form.prod_name}}
       <label>Quantity: </label>
       {{form.quantity}}
@@ -18,9 +19,10 @@
       <label>Amount: </label>
       {{form.amount}}
       <div class="btn-flex">
-        <button type="submit" class="btn">Add Sales</button>
-        <button type="reset" class="btn">Reset</button>
+        <button type="submit" class="button-register">Add Sales</button>
+        <button type="reset" class="button-register">Reset</button>
       </div>
     </form>
   </div>
+</div>
 {% endblock %}

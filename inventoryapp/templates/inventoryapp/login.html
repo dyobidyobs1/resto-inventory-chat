@@ -1,15 +1,13 @@
 {% extends 'inventoryapp/base.html' %}
 {% block content %}
-<h1>Login</h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    <label>UserName: </label>
-    <input type="text" name="username">
-    <label>Password: </label>
-    <input type="password" name="password">
-    <div class="btn-flex">
-        <button type="submit" class="btn">Login</button>
-        <button type="reset" class="btn">Reset</button>
-    </div>
-</form>
+<div class="container">
+    <h1>Login</h1>
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        <input name="username" type="text" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
+        <button type="submit" id="login-button">Login</button>
+    </form>
+    <p>Register? Click <a href="{% url 'register' %}">here</a></p>
+</div>
 {% endblock %}

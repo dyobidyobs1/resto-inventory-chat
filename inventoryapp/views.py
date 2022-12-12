@@ -23,7 +23,7 @@ def Register(request):
     return render(request, "inventoryapp/register.html", context)
 
 def Login(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_staff:
         return redirect("inventory")
     else:
         if request.method == "POST":
@@ -70,6 +70,16 @@ def createstock(request):
         if stockform.is_valid():
             stockform.save()
         return redirect("inventory")
+    else:
+        default_subject = FoodInventory.objects.get(id=1)
+        default_type = ProdType.objects.get(id=1)
+        default_size = ProdType.objects.get(id=1)
+        # Set the default value
+        stockform = StockForm(initial={
+            "branch":default_subject,
+            "prod_type":default_type, 
+            "size":default_size
+            })
     context = {'form': stockform}
     return render(request, "inventoryapp/createstock.html", context)
 
@@ -106,7 +116,7 @@ def createsales(request):
 
 @login_required(login_url="login")
 def updatesales(request, pk):
-    post = FoodInventory.objects.get(id=pk)
+    post = DailySales.objects.get(id=pk)
     salesform = SalesForm(instance=post)
 
     if request.method == 'POST':

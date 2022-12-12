@@ -1,20 +1,18 @@
 {% extends 'inventoryapp/base.html' %}
 {% block content %}
+<div class="container">
 	<form action="" method="post">
 		{% csrf_token %}
 		<h1>Register</h1>
 		<div class="register-input">
 			<div class="username">
-				<label for="Username">Username</label>
-				<input type="text" name="username" required>
+				<input type="text" name="username" placeholder="Username" required>
 			</div>
 			<div class="password">
-				<label for="Password">Password</label>
-				<input type="password" name="password1" required>
+				<input type="password" name="password1" placeholder="Password" required>
 			</div>
 			<div class="password">
-				<label for="Password">Confirm Password</label>
-				<input type="password" name="password2" required>
+				<input type="password" name="password2" placeholder="Confirm Password" required>
 			</div>
 		</div>
 		<div class="register-btn">
@@ -24,4 +22,5 @@
 		<p class="message">{{register.errors}}</p>
 	</form>
 	<p>Already Register? Click <a href="{% url 'login' %}">here</a></p>
+</div>
 {% endblock %}

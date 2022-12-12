@@ -35,11 +35,12 @@ class FoodInventory(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'{self.prod_name} | {self.branch}'
+        return f'{self.prod_name}'
+        # return f'{self.prod_name} | {self.branch}'
 
 class DailySales(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    prod_name = models.CharField(max_length=255)
+    prod_name = models.ForeignKey(FoodInventory, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     customer = models.CharField(max_length=255)
     mop = models.ForeignKey(MOP, on_delete=models.CASCADE)

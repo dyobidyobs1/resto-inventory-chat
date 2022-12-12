@@ -1,5 +1,6 @@
 {% extends 'inventoryapp/base.html' %}
 {% block content %}
+{% load static %} 
 <main>
     <div class="intro">
       <h1>Tomguts?</h1>
@@ -8,19 +9,19 @@
     </div>
     <div class="achievements">
       <div class="work">
-        <img src="" alt="meal image">
-        <p class="work-heading">Meal 1</p>
-        <p class="work-text">Description</p>
+        <img src="{% static 'images/1.jpg' %}" alt="meal image" height="200px" width="200px">
+        <p class="work-heading">Sisig ala Tomguts</p>
+        <p class="work-text">₱199</p>
       </div>
       <div class="work">
-        <img src="" alt="meal image">
-        <p class="work-heading">Meal 2</p>
-        <p class="work-text">Description</p>
+        <img src="{% static 'images/2.jpg' %}" alt="meal image" height="200px" width="200px">
+        <p class="work-heading">Crispy Pata</p>
+        <p class="work-text">₱599</p>
       </div>
       <div class="work">
-        <img src="" alt="meal image">
-        <p class="work-heading">Meal 3</p>
-        <p class="work-text">Description</p>
+        <img src="{% static 'images/3.jpg' %}" alt="meal image" height="200px" width="200px">
+        <p class="work-heading">Fried Itik</p>
+        <p class="work-text">₱300</p>
       </div>
     </div>
     <div class="about-me">
