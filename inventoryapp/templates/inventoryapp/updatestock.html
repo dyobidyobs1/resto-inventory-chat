@@ -4,7 +4,7 @@
 <h1>Update Stock</h1>
 <!-- <a href="{% url 'inventory' %}" class="button" style="margin-left: 40px;">Go Back</a> -->
   <div class="section-delete">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label>Branch: </label>
       {{form.branch}}
@@ -18,6 +18,8 @@
       {{form.price}}
       <label>Quantity: </label>
       {{form.quantity}}
+      <label>Update image: </label>
+      {{form.image}}
       <div class="btn-flex">
         <button type="submit" class="button-register">Save</button>
         <button type="reset" class="button-register">Reset</button>

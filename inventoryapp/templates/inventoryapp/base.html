@@ -18,34 +18,44 @@
 </head>
 <body>
     <nav class="navbar">
-        <a class="brand" href="#">TG?</a>
+        <a class="brand" href="{% url 'index' %}">TG?</a>
         <ul>
-          <li>
-            <a href="{% url 'index' %}">Home</a>
-          </li>
-          <li>
-            <a href="{% url 'contact' %}">Contact</a>
-          </li>
-            {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
             {% if user.is_staff %}
-            <li>
-                <a href="{% url 'inventory' %}">Inventory</a>
-            </li>
-            <li>
-                <a href="{% url 'sales' %}">Sales</a>
-            </li>
-            {% endif %}
-            <li>
+              <li>
+                <a href="{% url 'admin' %}">Admin Page</a>
+              </li>
+              <li>
+                  <a href="{% url 'inventory' %}">Inventory</a>
+              </li>
+              <li>
+                  <a href="{% url 'sales' %}">Sales</a>
+              </li>
+              <li>
                 <a href="{% url 'logout' %}">Logout</a>
-            </li>
+              </li>
             {% else %}
+              <li>
+                <a href="{% url 'index' %}">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'order_menu' %}">Order</a>
+              </li>
+              <li>
+                <a href="{% url 'contact' %}">Contact</a>
+              </li>
+              <li>
+                  <a href="{% url 'logout' %}">Logout</a>
+              </li>
+            {% endif %}
+          {% else %}
             <li>
                 <a href="{% url 'login' %}">Login</a>
             </li>
             <li>
                 <a href="{% url 'register' %}">Register</a>
             </li>
-            {% endif %}
+          {% endif %}
         </ul>
     </nav>
     <div class="content">

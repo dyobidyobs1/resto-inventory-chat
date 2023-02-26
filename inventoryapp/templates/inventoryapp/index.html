@@ -3,9 +3,15 @@
 {% load static %} 
 <main>
     <div class="intro">
+      {% if user.is_authenticated %}
+      <h1>WELCOME, {{request.user}}</h1>
+      {% else %}
       <h1>Tomguts?</h1>
       <p>Crispy Pata, Ulo, Atbp</p>
-      <button>Order Now</button>
+      {% endif %}
+      <form action="{% url 'order_menu' %}">
+        <button type="submit">Order Now</button>
+      </form>
     </div>
     <div class="achievements">
       <div class="work">

@@ -8,6 +8,7 @@
         <input name="password" type="password" placeholder="Password">
         <button type="submit" id="login-button">Login</button>
     </form>
+    <p class="message">{{login.errors}}</p>
     <p>Register? Click <a href="{% url 'register' %}">here</a></p>
 </div>
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -33,12 +34,14 @@ class FoodInventory(models.Model):
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
     price = models.FloatField(max_length=10)
     quantity = models.IntegerField()
+    image = models.ImageField(upload_to="foods/%Y/%m/%d/")
 
     def __str__(self):
         return f'{self.prod_name}'
         # return f'{self.prod_name} | {self.branch}'
 
 class DailySales(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     prod_name = models.ForeignKey(FoodInventory, on_delete=models.CASCADE)
     quantity = models.IntegerField()
@@ -49,3 +52,7 @@ class DailySales(models.Model):
 
     def __str__(self):
        return f'SO-{self.id}'
+
+# class DiffUser(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+#     is_admin = models.BooleanField(default=True, verbose_name='is_customer')

@@ -9,6 +9,7 @@ urlpatterns = [
     path('inventory/', views.inventory, name='inventory'),
     path('createstock/', views.createstock, name='createstock'),
     path('updatestock/<str:pk>', views.updatestock, name='updatestock'),
+    path('deletestock/<str:pk>', views.deletestock, name='deletestock'),
     # SALES
     path('sales/', views.sales, name='sales'),
     path('createsales/', views.createsales, name='createsales'),
@@ -16,5 +17,9 @@ urlpatterns = [
     # AUTH
     path("login/", views.Login, name="login"),
     path("logout/", views.Logout, name="logout"),
-    path('register/', views.Register, name='register')
+    path('register/', views.Register, name='register'),
+    # ADMIN
+    path('admin/', views.adminpage, name='admin'),
+    # CUSTOMER
+    path('order/', views.ordermenu, name='order_menu'),
 ]
