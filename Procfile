@@ -1,1 +1,1 @@
-web: gunicorn inventoryapp.wsgi --log-file -
+web: gunicorn restorant_inventory.wsgi --log-file -
