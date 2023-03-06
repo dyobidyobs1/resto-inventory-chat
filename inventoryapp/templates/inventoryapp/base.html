@@ -18,7 +18,8 @@
 </head>
 <body>
     <nav class="navbar">
-        <a class="brand" href="{% url 'index' %}">TG?</a>
+        <a class="brand" href="{% url 'index' %}"><img 
+          src="{% static 'images/logo.png' %}" alt="Logo" height="70px" width="100px"></a>
         <ul>
           {% if user.is_authenticated %}
             {% if user.is_staff %}

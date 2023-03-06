@@ -6,7 +6,7 @@
       {% if user.is_authenticated %}
       <h1>WELCOME, {{request.user}}</h1>
       {% else %}
-      <h1>Tomguts?</h1>
+      <img src="{% static 'images/logo.png' %}" alt="Logo" height="250px" width="350px">
       <p>Crispy Pata, Ulo, Atbp</p>
       {% endif %}
       <form action="{% url 'order_menu' %}">
