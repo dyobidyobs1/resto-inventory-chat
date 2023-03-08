@@ -23,9 +23,11 @@
         <ul>
           {% if user.is_authenticated %}
             {% if user.is_staff %}
+              {% if user.is_superuser %}
               <li>
                 <a href="{% url 'admin' %}">Admin Page</a>
               </li>
+              {% endif %}
               <li>
                   <a href="{% url 'inventory' %}">Inventory</a>
               </li>
