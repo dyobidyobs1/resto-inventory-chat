@@ -1,6 +1,6 @@
 {% extends 'inventoryapp/base.html' %} {% block content %}
 <div class="container-table">
-  <h1>Sales List</h1>
+  <h1>Customer Order</h1>
 </div>
 <div class="tb-res">
   <div class="tbl-header">
@@ -9,12 +9,10 @@
         <th class="hide" scope="col">Sales Order ID</th>
         <th scope="col">Product Name</th>
         <th class="hide" scope="col">Quantity</th>
-        <th class="hide" scope="col">Customer Name</th>
         <th class="hide" scope="col">Mode of Payment</th>
         <th class="hide" scope="col">Date</th>
         <th class="hide" scope="col">Branch</th>
         <th class="hide" scope="col">Amount</th>
-        <th scope="col">Action</th>
       </tr>
     </table>
   </div>
@@ -25,25 +23,10 @@
         <td>SO-{{i.id}}</td>
         <td>{{i.prod_name}}</td>
         <td>{{i.quantity}}</td>
-        <td>{{i.customer}}</td>
         <td>{{i.mop}}</td>
         <td>{{i.date}}</td>
         <td>{{i.branch}}</td>
         <td>{{i.amount}}</td>
-        <td>
-          <a
-            class="button-link"
-            href="{% url 'updatesales' i.id %}"
-            class="crud"
-            >Update</a
-          >
-          <!-- <a
-            class="button-link"
-            href="{% url 'updatesales' i.id %}"
-            class="crud"
-            >Delete</a
-          > -->
-        </td>
       </tr>
       {% endfor %}
     </table>

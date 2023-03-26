@@ -45,10 +45,9 @@ class DailySales(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     prod_name = models.ForeignKey(FoodInventory, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    customer = models.CharField(max_length=255)
     mop = models.ForeignKey(MOP, on_delete=models.CASCADE)
-    date = models.DateField(auto_now_add=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateTimeField(auto_now_add=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
        return f'SO-{self.id}'

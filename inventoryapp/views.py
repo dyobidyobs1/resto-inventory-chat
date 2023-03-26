@@ -126,9 +126,25 @@ def createsales(request):
     if request.method == 'POST':
         salesform = SalesForm(request.POST, request.FILES)
         if salesform.is_valid():
-            salesform.save(commit=False).user = request.user
-            salesform.save()
-        return redirect("sales")
+            prod_id = request.POST.get("prod_name")
+            print(prod_id)
+            order_food = FoodInventory.objects.get(id=prod_id)
+            order_amount = order_food.price
+            current_quantity = order_food.quantity
+            quantity = request.POST.get("quantity")
+            amount = int(quantity) * order_amount
+            if int(quantity) < current_quantity:
+                updated_quantity = current_quantity - int(quantity)
+                updated_data = {"quantity": updated_quantity}
+                FoodInventory.objects.filter(id=1).update(**updated_data)
+                user = salesform.cleaned_data.get("prod_name_id")
+                print(user)
+                salesform.save(commit=False).user = request.user
+                salesform.save(commit=False).amount = amount
+                salesform.save()
+            else:
+                return redirect("validation1")
+        return redirect("index")
     context = {'form': salesform}
     return render(request, "inventoryapp/createsales.html", context)
 
@@ -162,4 +178,15 @@ def ordermenu(request):
     context = {}
     return render(request, 'inventoryapp/order_menu.html', context)
 
+@login_required(login_url="login")
+def customer_order(request):
+    sales = DailySales.objects.filter(user=request.user).order_by('-date')
+    print(sales)
+    context = {"sales": sales}
+    return render(request, "inventoryapp/customer_orders.html", context)
 
+
+# VALIDATION
+def validation1(request):
+    context = {}
+    return render(request, 'inventoryapp/exceed.html', context)

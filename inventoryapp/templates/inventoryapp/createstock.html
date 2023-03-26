@@ -1,8 +1,7 @@
-{% extends 'inventoryapp/base.html' %}
-{% block content %}
+{% extends 'inventoryapp/base.html' %} {% block content %}
 <div class="container">
-<h1>Create Stock</h1>
-<!-- <a href="{% url 'inventory' %}" class="button" style="margin-left: 40px;">Go Back</a> -->
+  <h1>Create Stock</h1>
+  <!-- <a href="{% url 'inventory' %}" class="button" style="margin-left: 40px;">Go Back</a> -->
   <div class="section-delete">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}

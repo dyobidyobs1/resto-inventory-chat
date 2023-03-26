@@ -12,7 +12,6 @@ urlpatterns = [
     path('deletestock/<str:pk>', views.deletestock, name='deletestock'),
     # SALES
     path('sales/', views.sales, name='sales'),
-    path('createsales/', views.createsales, name='createsales'),
     path('updatesales/<str:pk>', views.updatesales, name='updatesales'),
     # AUTH
     path("login/", views.Login, name="login"),
@@ -21,5 +20,8 @@ urlpatterns = [
     # ADMIN
     path('admin/', views.adminpage, name='admin'),
     # CUSTOMER
-    path('order/', views.ordermenu, name='order_menu'),
+    path('order/', views.createsales, name='order_menu'),
+    path('order_history/', views.customer_order, name='customer_order'),
+    # VALIDATIONS
+    path('validation1/', views.validation1, name='validation1'),
 ]
