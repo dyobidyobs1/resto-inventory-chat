@@ -136,7 +136,7 @@ def createsales(request):
             if int(quantity) < current_quantity:
                 updated_quantity = current_quantity - int(quantity)
                 updated_data = {"quantity": updated_quantity}
-                FoodInventory.objects.filter(id=1).update(**updated_data)
+                FoodInventory.objects.filter(id=prod_id).update(**updated_data)
                 user = salesform.cleaned_data.get("prod_name_id")
                 print(user)
                 salesform.save(commit=False).user = request.user
