@@ -1,0 +1,22 @@
+{% extends 'inventoryapp/base.html' %} {% block content %}
+<div class="container">
+  <h1>Cart</h1>
+  <a href="{% url 'summary_order' %}" class="clicks">Checkout</a>
+  {% for i in cart %}
+  <main class="l-card-messages">
+      <section class="l-card__text">
+          <p>
+             {{i.product_name}}
+          </p>
+      </section>
+      <section class="l-card__user">
+          <div class="l-card__userInfo">
+              <p>Quantity: {{i.quantity}}</p>
+              <p>Price: {{i.price}}</p>
+          </div>
+      </section>
+  </main>
+  {% endfor %}
+  <div class="hidden">y</div>
+</div>
+{% endblock %}

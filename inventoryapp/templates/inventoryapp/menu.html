@@ -1,0 +1,26 @@
+{% extends 'inventoryapp/base.html' %} {% block content %}
+<div class="container-menu">
+  <h1>Menu</h1>
+  <section class="articles">
+    {% for i in inventory %}
+    <article>
+      <div class="article-wrapper">
+        <figure>
+          <img src="{{ i.image.url }}" alt="{{i.prod_name}}" />
+        </figure>
+        <div class="article-body">
+          <h2>{{i.prod_name}}</h2>
+          <p>
+            {{i.description}}
+          </p>
+          <a href="{% url 'fooddetails' i.id %}" class="read-more">
+            Add to Cart
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+  <div class="hidden">y</div>
+</div>
+{% endblock %}

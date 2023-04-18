@@ -219,7 +219,34 @@ form input:focus {
   width: 300px;
   color: rgb(255, 255, 255);
 }
-form button {
+
+.form-details input {
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+.form-details input:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.form-details input:focus {
+  background-color: rgb(193, 193, 193);
+  width: 300px;
+  color: rgb(0, 0, 0);
+}
+
+form button, .container .clicks {
   appearance: none;
   outline: 0;
   background-color: rgb(0, 0, 0);
@@ -232,7 +259,7 @@ form button {
   font-size: 18px;
   transition-duration: 0.25s;
 }
-form button:hover {
+form button:hover, .container .clicks:hover {
   background-color: #ffffff;
   color: #000000;
 }
@@ -460,4 +487,220 @@ td{
   position: relative;
   bottom: calc(100% - 2.5em);
   left: 1em;
+}
+
+
+/* Menu */
+.container-menu {
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+}
+.container-menu h1 {
+  font-size: 40px;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-put;
+  font-weight: 200;
+}
+
+
+
+
+
+article {
+  --img-scale: 1;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin:initial;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1rem;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  max-height: 100%;
+  transform-origin: top;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+.articles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  gap: 24px;
+}
+
+
+/* Checkout */
+
+
+.l-card-consultation {
+	/* width: auto;
+	min-width: 360px;
+	max-width: 480px; */
+	height: auto;
+	background: #f5f5f5;
+	color: #272727;
+	padding: 2rem;
+	box-shadow: 0px 7px 24px rgba(56, 49, 49, 0.4);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.l-card-messages {
+	height: auto;
+	background: #ffffff;
+	color: #000000;
+	padding: 2rem;
+	box-shadow: 0px 7px 24px rgba(53, 51, 51, 0.4);
+  border: 1px solid #c1c1c1;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+
+.l-card__text p {
+	font-size: 30px;
+	font-family: "Vollkorn", serif;
+	font-weight: 400;
+	color: #3f3f55;
+	text-align: center;
+}
+
+/* .l-card-messages .l-card__text p::after {
+	content: "\201D";
+	display: inline;
+	color: #999;
+}
+
+.l-card-messages .l-card__text p::before {
+	content: "\201C";
+	display: inline;
+	color: #999;
+} */
+
+.l-card__user {
+	display: flex;
+	flex-direction: row;
+	padding-top: 24px;
+	margin-top: 12px;
+	/* border-top: 1px solid #c1c1c1; */
+	text-align: left;
+}
+.l-card__userImage {
+	width: 42px;
+	height: 42px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.l-card__userInfo {
+	display: flex;
+	flex-direction: column;
+	margin-left: 16px;
+}
+
+.l-card__userInfo span:nth-child(1) {
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 20px;
+	color: #565656;
+}
+.l-card__userInfo span:nth-child(2) {
+	color: #34373b;
+	font-family: sans-serif;
+	font-size: 18px;
+	margin-top: 2px;
+}
+
+.l-card-messages .l-card__userInfo span:nth-child(1) {
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 20px;
+	color: #000000;
+}
+.l-card-messages .l-card__userInfo span:nth-child(2) {
+	color: #34373b;
+	font-family: sans-serif;
+	font-size: 18px;
+	margin-top: 2px;
+}
+
+.hidden {
+  visibility: hidden;
 }

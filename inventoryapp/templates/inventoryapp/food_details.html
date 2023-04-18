@@ -1,0 +1,25 @@
+{% extends 'inventoryapp/base.html' %} {% block content %}
+<div class="main">
+  <ul class="cards">
+    <li class="cards_item" id="item_salad">
+      <div class="card">
+        <div class="card_price">{{inventory.new_price}}</div>
+        <div class="card_image"><img src="{{inventory.image.url}}" alt="mixed vegetable salad in a mason jar. "></div>
+        <div class="card_content">
+          <h2 class="card_title">{{inventory.prod_name}}</h2>
+          <div class="card_text">
+            <p>{{inventory.description}}</p>
+          </div>
+        </div>
+        <div class="container">
+        <form action="" method="POST" class="form-details">
+          {% csrf_token %}
+          <input name="quantity" type="number" min="0" placeholder="Quantity">
+          <button type="submit" id="login-button">Add to Cart</button>
+      </form>
+      </div>
+      </div>
+    </li>
+  </ul>
+</div>
+{% endblock %}

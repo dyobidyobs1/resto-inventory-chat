@@ -1,0 +1,35 @@
+{% extends 'inventoryapp/base.html' %} {% block content %}
+<div class="container-menu">
+  <h1>Order Summary</h1>
+  <section class="articles" styles="width: 1000px;">
+    <article>
+      <div class="article-wrapper" styles="width: 1000px;">
+        <div class="article-body">
+          {% for i in cart %}
+          <h1>{{i.product_name}}</h1>
+          <p  style="font-size:medium;">
+            Quantity: <b>{{i.quantity}}</b>
+          </p>
+          <p  style="font-size:medium;">
+            Price: <b>{{i.price}}</b>
+          </p>
+          <hr>
+          {% endfor %}
+        </div>
+        <p style="font-size:medium; margin-bottom:1rem;"> 
+          Total Amount: <b>{{total_amount}}</b>
+        </p>
+    </article>
+    <div class="container">
+      <form action="" method="POST" class="form-details">
+        {% csrf_token %}
+        <input name="name" type="text" placeholder="Name">
+        <input name="number" type="number" min="0" placeholder="Number">
+        <input name="email" type="email" placeholder="Email">
+        <input name="address" type="address" min="0" placeholder="Address">
+        <button type="submit" id="login-button">Process Order</button>
+    </div>
+  </section>
+  <div class="hidden">y</div>
+</div>
+{% endblock %}

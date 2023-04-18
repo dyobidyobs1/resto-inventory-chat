@@ -9,6 +9,9 @@ from django.urls import reverse
 from .models import *
 from .forms import *
 
+from django.db.models import Q
+locale.setlocale(locale.LC_ALL, 'fil-PH')
+
 def Register(request):
     if request.user.is_authenticated:
         return redirect("index")
@@ -184,6 +187,83 @@ def customer_order(request):
     print(sales)
     context = {"sales": sales}
     return render(request, "inventoryapp/customer_orders.html", context)
+
+def menu(request):
+    stock = FoodInventory.objects.all()
+    context = { "inventory": stock }
+    return render(request, 'inventoryapp/menu.html', context)
+
+@login_required(login_url="login")
+def fooddetails(request, pk):
+    stock = FoodInventory.objects.get(id=pk)
+    context = { "inventory": stock }
+    if request.method == 'POST':
+        quantity = request.POST.get("quantity")
+        pre_amount = stock.price * float(quantity)
+        OrderCart.objects.create(
+        user=request.user,
+        product_name=stock.prod_name,
+        quantity=quantity,
+        amount=pre_amount,
+        cart_reference="new"
+        )
+        return redirect("menu")
+    return render(request, 'inventoryapp/food_details.html', context)
+
+@login_required(login_url="login")
+def cart(request):
+    cart = OrderCart.objects.filter(Q(user=request.user) & Q(cart_reference="new"))
+    context = { "cart": cart}
+    return render(request, 'inventoryapp/cart.html', context)
+
+@login_required(login_url="login")
+def summary_order(request):
+    cart = OrderCart.objects.filter(Q(user=request.user) & Q(cart_reference="new"))
+    total_amount = 0.0
+    total_quantity = 0.0
+    name_of_order = []
+    reference_number = ""
+    for i in cart:
+        name_of_order.append(i.product_name)
+        total_amount = float(total_amount) + float(i.amount)
+        total_quantity = float(total_quantity) + float(i.quantity)
+    print(total_quantity)
+    print(total_amount)
+    print(name_of_order)
+    # total_amount = locale.currency(total_amount, grouping=True)
+    context = { "cart": cart, "total_amount" : total_amount }
+    if request.method == 'POST':
+        reference_number = create_rand_id()
+        print(reference_number)
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        email = request.POST.get("email")
+        address = request.POST.get("address")
+        OrderProcess.objects.create(
+        user=request.user,
+        product_id=name_of_order,
+        total_amount=total_amount,
+        name_buyer=name,
+        email=email,
+        number=number,
+        address=address,
+        reference_number=str(reference_number))
+        for i in cart:
+            OrderCart.objects.filter(pk=i.id).update(cart_reference='some value')
+        return redirect("index")
+    return render(request, 'inventoryapp/summary_order.html', context)
+
+@login_required(login_url="login")
+def payment(request):
+    context = {}
+    return render(request, 'inventoryapp/payment.html', context)
+
+@login_required(login_url="login")
+def orderprocess(request):
+    sales = OrderProcess.objects.filter(user=request.user)
+    context = {"sales": sales}
+    return render(request, "inventoryapp/order_view.html", context)
+
 
 
 # VALIDATION
