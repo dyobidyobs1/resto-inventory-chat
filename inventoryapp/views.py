@@ -10,7 +10,7 @@ from .models import *
 from .forms import *
 
 from django.db.models import Q
-locale.setlocale(locale.LC_ALL, 'fil-PH')
+# locale.setlocale(locale.LC_ALL, 'fil-PH')
 
 def Register(request):
     if request.user.is_authenticated:
