@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 import locale
 import uuid
-locale.setlocale(locale.LC_ALL, 'fil-PH')
+# locale.setlocale(locale.LC_ALL, 'fil-PH')
 
 # Create your models here.
 def create_rand_id():
