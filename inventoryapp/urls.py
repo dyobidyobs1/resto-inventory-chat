@@ -17,9 +17,11 @@ urlpatterns = [
     path('summary_order/', views.summary_order, name='summary_order'),
     path('payment/', views.payment, name='payment'),
     path('orderprocess/', views.orderprocess, name='orderprocess'),
+    path('deletecart/<str:pk>', views.deletecart, name='deletecart'),
     # SALES
     path('sales/', views.sales, name='sales'),
     path('updatesales/<str:pk>', views.updatesales, name='updatesales'),
+    path('delivered/<str:pk>', views.deliveredorder, name='delivered'),
     # AUTH
     path("login/", views.Login, name="login"),
     path("logout/", views.Logout, name="logout"),

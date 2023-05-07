@@ -88,7 +88,12 @@ class OrderCart(models.Model):
         return f"Cart for User {self.user} | {self.cart_reference} | {self.id}"
     
 class OrderProcess(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    STATUS = (
+        ("Pending", "Pending"),
+        ("Delivered", "Delivered"),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     product_id = ArrayField(models.CharField(max_length=255))
     total_amount = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     name_buyer = models.CharField(max_length=255)
@@ -99,6 +104,9 @@ class OrderProcess(models.Model):
     # mop = models.ForeignKey(MOP, on_delete=models.CASCADE)
     reference_number = models.CharField(max_length=255, editable=False, null=True, blank=True,
         default=create_rand_id)
+    date_created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=25, choices=STATUS)
+
 
 
     def __str__(self):
@@ -107,3 +115,7 @@ class OrderProcess(models.Model):
     def price(self):
         locale.setlocale(locale.LC_ALL, 'fil-PH')
         return locale.currency(self.total_amount, grouping=True)
+
+    def date(self):
+        locale.setlocale(locale.LC_ALL, 'en-US')
+        return self.date_created.strftime("%B %d, %Y")

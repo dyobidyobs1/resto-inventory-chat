@@ -1,7 +1,9 @@
 {% extends 'inventoryapp/base.html' %} {% block content %}
 <div class="container">
   <h1>Cart</h1>
+  {% if cart %}
   <a href="{% url 'summary_order' %}" class="clicks">Checkout</a>
+  {% endif %}
   {% for i in cart %}
   <main class="l-card-messages">
       <section class="l-card__text">
@@ -13,6 +15,7 @@
           <div class="l-card__userInfo">
               <p>Quantity: {{i.quantity}}</p>
               <p>Price: ₱{{i.amount}}</p>
+              <a href="{% url 'deletecart' i.id %}" class="clicks" style="padding:0.2rem; margin: 0; width: 100px; text-align:center;">Remove</a>
           </div>
       </section>
   </main>

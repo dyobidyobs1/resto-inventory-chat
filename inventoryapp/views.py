@@ -119,7 +119,7 @@ def deletestock(request, pk):
 
 @login_required(login_url="login")
 def sales(request):
-    sales = DailySales.objects.all()
+    sales = OrderProcess.objects.all().order_by('-date_created')
     context = {"sales": sales}
     return render(request, "inventoryapp/sales.html", context)
 
@@ -164,13 +164,14 @@ def updatesales(request, pk):
             return redirect('sales')
     return render(request, 'inventoryapp/updatesales.html', {'form': salesform})
 
-# def deletesales(request, pk):
-#     post = Post.objects.get(rndid=pk)
-#     if request.method == 'POST':
-#         post.delete()
-#         return redirect('index')
-#     return render(request, 'post/delete.html', {'post': post})
+def deletecart(request, pk):
+    post = OrderCart.objects.get(id=pk)
+    post.delete()
+    return redirect('cart')
 
+def deliveredorder(request, pk):
+    OrderProcess.objects.filter(id=pk).update(status='Delivered')
+    return redirect('sales')
 
 @login_required(login_url="login")
 def adminpage(request):
@@ -247,6 +248,8 @@ def summary_order(request):
         email=email,
         number=number,
         address=address,
+        quantity=int(total_quantity),
+        status="Pending",
         reference_number=str(reference_number))
         for i in cart:
             OrderCart.objects.filter(pk=i.id).update(cart_reference='some value')
@@ -260,7 +263,7 @@ def payment(request):
 
 @login_required(login_url="login")
 def orderprocess(request):
-    sales = OrderProcess.objects.filter(user=request.user)
+    sales = OrderProcess.objects.filter(user=request.user).order_by('-date_created')
     context = {"sales": sales}
     return render(request, "inventoryapp/order_view.html", context)
 

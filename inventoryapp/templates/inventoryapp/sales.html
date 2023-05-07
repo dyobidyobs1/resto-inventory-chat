@@ -10,10 +10,11 @@
         <th scope="col">Product Name</th>
         <th class="hide" scope="col">Quantity</th>
         <th class="hide" scope="col">Customer Name</th>
+        <th class="hide" scope="col">Contact Number</th>
+        <!-- <th class="hide" scope="col">Branch</th> -->
         <th class="hide" scope="col">Mode of Payment</th>
-        <th class="hide" scope="col">Date</th>
-        <th class="hide" scope="col">Branch</th>
         <th class="hide" scope="col">Amount</th>
+        <th class="hide" scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </table>
@@ -22,21 +23,30 @@
     <table cellpadding="0" cellspacing="0" border="0">
       <tr>
         {% for i in sales %}
-        <td>SO-{{i.id}}</td>
-        <td>{{i.prod_name}}</td>
-        <td>{{i.quantity}}</td>
-        <td>{{i.customer}}</td>
-        <td>{{i.mop}}</td>
-        <td>{{i.date}}</td>
-        <td>{{i.branch}}</td>
-        <td>{{i.amount}}</td>
+        <td>SO-{{i.reference_number}}</td>
         <td>
+          {% for pro in i.product_id %}
+          <b>{{pro}}</b><br>
+          {% endfor %}
+        </td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.name_buyer}}</td>
+        <td>{{i.number}}</td>
+        <!-- <td>{{i.branch}}</td> -->
+        <td>COD</td>
+        <td>₱{{i.total_amount}}</td>
+        <td>{{i.status}}</td>
+        <td>
+          {% if i.status == "Pending" %}
           <a
             class="button-link"
-            href="{% url 'updatesales' i.id %}"
+            href="{% url 'delivered' i.id %}"
             class="crud"
-            >Update</a
+            >Delivered</a
           >
+          {% else %}
+            Done
+          {% endif %}
           <!-- <a
             class="button-link"
             href="{% url 'updatesales' i.id %}"

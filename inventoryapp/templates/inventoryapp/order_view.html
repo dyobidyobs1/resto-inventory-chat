@@ -13,6 +13,7 @@
         <!-- <th class="hide" scope="col">Branch</th> -->
         <th class="hide" scope="col">Quantity</th>
         <th class="hide" scope="col">Amount</th>
+        <th class="hide" scope="col">Status</th>
       </tr>
     </table>
   </div>
@@ -22,10 +23,14 @@
         {% for i in sales %}
         <td>SO-{{i.reference_number}}</td>
         <td>COD</td>
-        <td>{{i.product_id}}</td>
+        <td>
+          {% for pro in i.product_id %}
+          <b>{{pro}}</b><br>
+          {% endfor %}
+        </td>
         <td>{{i.quantity}}</td>
         <td>₱{{i.total_amount}}</td>
-        </td>
+        <td>{{i.status}}</td>
       </tr>
       {% endfor %}
     </table>
