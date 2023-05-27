@@ -51,7 +51,8 @@ def Logout(request):
     return redirect("index")
 
 def index(request):
-    context = {}
+    inventory = FoodInventory.objects.all()
+    context = {"inventory": inventory}
     if request.user.is_staff == True:
         return render(request, 'inventoryapp/welcome_admin.html', context)
     else:
@@ -166,6 +167,10 @@ def updatesales(request, pk):
 
 def deletecart(request, pk):
     post = OrderCart.objects.get(id=pk)
+    stock = FoodInventory.objects.get(prod_name=post.product_name)
+    updated_quantity = stock.quantity + int(post.quantity)
+    updated_data = {"quantity": updated_quantity}
+    FoodInventory.objects.filter(id=stock.id).update(**updated_data)
     post.delete()
     return redirect('cart')
 
@@ -201,14 +206,21 @@ def fooddetails(request, pk):
     if request.method == 'POST':
         quantity = request.POST.get("quantity")
         pre_amount = stock.price * float(quantity)
-        OrderCart.objects.create(
-        user=request.user,
-        product_name=stock.prod_name,
-        quantity=quantity,
-        amount=pre_amount,
-        cart_reference="new"
-        )
-        return redirect("menu")
+        current_quantity = stock.quantity
+        if int(quantity) < current_quantity:
+            updated_quantity = current_quantity - int(quantity)
+            updated_data = {"quantity": updated_quantity}
+            FoodInventory.objects.filter(id=pk).update(**updated_data)
+            OrderCart.objects.create(
+            user=request.user,
+            product_name=stock.prod_name,
+            quantity=quantity,
+            amount=pre_amount,
+            cart_reference="new"
+            )
+            return redirect("menu")
+        else:
+            return redirect("validation1")
     return render(request, 'inventoryapp/food_details.html', context)
 
 @login_required(login_url="login")

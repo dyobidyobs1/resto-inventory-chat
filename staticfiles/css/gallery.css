@@ -1,0 +1,27 @@
+
+.gallery {
+    background: #EEE;
+}
+  
+.gallery-cell {
+width: 20%;
+height: 200px;
+margin: 5rem 10rem;
+background: #8C8;
+text-align: center;
+} 
+.gallery-cell img {
+    width: 100%;
+    height: 200px;
+}
+
+
+/* cell number
+.gallery-cell:before {
+display: block;
+text-align: center;
+content: counter(gallery-cell);
+line-height: 200px;
+font-size: 80px;
+color: white;
+  } */

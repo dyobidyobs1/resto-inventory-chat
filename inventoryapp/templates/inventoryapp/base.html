@@ -10,6 +10,16 @@
       type="text/css"
       href="{% static 'css/main.css' %}"
       />
+      <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/flickity.css' %}"
+      />
+      <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/gallery.css' %}"
+      />
     {% if title %}
         <title>{{ title }}</title>
     {% else %}
@@ -78,6 +88,7 @@
         {% endblock %}
     </div>
 </body>
+<script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
 <script>
   window.addEventListener('mouseover', initLandbot, { once: true });
   window.addEventListener('touchstart', initLandbot, { once: true });

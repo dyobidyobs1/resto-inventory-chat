@@ -92,16 +92,18 @@ a {
   }
   
   .achievements {
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
     padding: 40px 80px;
   }
   
   .achievements .work {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* display: flex; */
+    /* flex-direction: column;   */
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
     align-items: center;
     padding: 0 40px;
   }

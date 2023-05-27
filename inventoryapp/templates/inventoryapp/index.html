@@ -14,26 +14,21 @@
       </form>
     </div>
     <div class="achievements">
-      <div class="work">
-        <img src="{% static 'images/1.jpg' %}" alt="meal image" height="200px" width="200px">
-        <p class="work-heading">Sisig ala Tomguts</p>
-        <p class="work-text">₱199</p>
-      </div>
-      <div class="work">
-        <img src="{% static 'images/2.jpg' %}" alt="meal image" height="200px" width="200px">
-        <p class="work-heading">Crispy Pata</p>
-        <p class="work-text">₱599</p>
-      </div>
-      <div class="work">
-        <img src="{% static 'images/3.jpg' %}" alt="meal image" height="200px" width="200px">
-        <p class="work-heading">Fried Itik</p>
-        <p class="work-text">₱300</p>
+      <div class="gallery js-flickity"
+        data-flickity-options='{ "wrapAround": true }'>
+        {% for i in inventory %}
+        <div class="gallery-cell">
+          <img src="{{i.image.url}}" alt="meal image">
+          <p class="work-heading">{{i.prod_name}}</p>
+          <p class="work-text">₱ {{i.price}}</p>
+        </div>
+        {% endfor %}
       </div>
     </div>
     <div class="about-me">
       <div class="about-me-text">
         <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, inventore. Fuga quam praesentium voluptatem, esse recusandae obcaecati! Eaque unde ea ullam adipisci, mollitia ad eveniet! Natus non expedita facilis repellendus!</p>
+        <p>Tomguts Food Station is a food business located at Mandaluyong City, Metro Manila and has 9 branches all over Luzon. Products offered are mainly Crispy Pata and Crispy Ulo. It all happened on one night when the business owners were having a drink and thought of making a pulutan food business and then planned everything out. They are famously known for having a Buy 1 Take 1 Crispy Pata and Crispy Ulo around the city.</p>
       </div>
       <img src="{% static 'images/storefront.jpg' %}" alt="logo">
     </div>
