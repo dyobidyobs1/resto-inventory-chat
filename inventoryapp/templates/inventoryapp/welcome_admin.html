@@ -1,8 +1,19 @@
 
 {% extends 'inventoryapp/base.html' %} 
 {% block content %}
+{% load static %}
 <div class="container">
   <h1>Admin Home Page</h1>
   <p>WELCOME, {{request.user}}</p>
-</div>
+  </div>
+  <main>
+  <div class="about-me">
+    <div class="about-me-text">
+      <h2>About Us</h2>
+      <p>Tomguts Food Station is a food business located at Mandaluyong City, Metro Manila and has 9 branches all over Luzon. Products offered are mainly Crispy Pata and Crispy Ulo. It all happened on one night when the business owners were having a drink and thought of making a pulutan food business and then planned everything out. They are famously known for having a Buy 1 Take 1 Crispy Pata and Crispy Ulo around the city.</p>
+    </div>
+    <img src="{% static 'images/storefront.jpg' %}" alt="logo">
+  </div>
+</main>
+<!-- </div> -->
 {% endblock %}

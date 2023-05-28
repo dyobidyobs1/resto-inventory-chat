@@ -5,7 +5,7 @@
   <a href="{% url 'summary_order' %}" class="clicks">Checkout</a>
   {% endif %}
   {% for i in cart %}
-  <main class="l-card-messages">
+  <main class="l-card-messages-cart">
       <section class="l-card__text">
           <p>
              {{i.product_name}}
@@ -15,7 +15,8 @@
           <div class="l-card__userInfo">
               <p>Quantity: {{i.quantity}}</p>
               <p>Price: ₱{{i.amount}}</p>
-              <a href="{% url 'deletecart' i.id %}" class="clicks" style="padding:0.2rem; margin: 0; width: 100px; text-align:center;">Remove</a>
+              <a href="{% url 'addquantity' i.id %}" class="clicks" style="padding:0.2rem;width: 90px; text-align:center;">Add Item</a>
+              <a href="{% url 'deletecart' i.id %}" class="clicks" style="padding:0.2rem;width: 90px; text-align:center;">Remove</a>
           </div>
       </section>
   </main>

@@ -357,19 +357,29 @@ form select:focus {
   text-align: center;
 }
 
-
+.container-table-sales {
+  max-width: 600px;
+  margin: auto;
+  padding: 50px 0;
+  height: 100px;
+  text-align: center;
+}
+ 
 table{
   width:100%;
   table-layout: fixed;
 }
 .tbl-header{
   background-color: rgba(255,255,255,0.3);
+  width: 95%;
+  margin:auto;
  }
 .tbl-content{
-  height:300px;
-  overflow-x:auto;
-  margin-top: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 95%;
+  margin:auto;
+  height:100%;
+  /* overflow-x:auto; */
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 th{
   padding: 20px 15px;
@@ -386,7 +396,7 @@ td{
   font-weight: 300;
   font-size: 12px;
   color: rgb(0, 0, 0);
-  border-bottom: solid 1px rgba(255,255,255,0.1);
+  /* border-bottom: solid 1px rgba(255,255,255,0.1); */
 }
 
 /* Order Card */
@@ -671,7 +681,7 @@ Generic layout (demo looks)
 	border-radius: 50%;
 }
 
-.l-card__userInfo {
+.l-card-messages .l-card__user .l-card__userInfo {
 	display: flex;
 	flex-direction: column;
 	margin-left: 16px;
@@ -702,6 +712,29 @@ Generic layout (demo looks)
 	font-size: 18px;
 	margin-top: 2px;
 }
+
+.l-card-messages-cart {
+  display: flex;
+  height: auto;
+	background: #ffffff;
+	color: #000000;
+	box-shadow: 0px 7px 24px rgba(53, 51, 51, 0.4);
+  border: 1px solid #c1c1c1;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.l-card-messages-cart .l-card__userInfo a, .l-card-messages-cart .l-card__userInfo p{
+  padding: 1rem;
+  text-align: center;
+}
+
+
+
 
 .hidden {
   visibility: hidden;

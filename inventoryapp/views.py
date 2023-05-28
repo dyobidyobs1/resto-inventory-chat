@@ -168,11 +168,40 @@ def updatesales(request, pk):
 def deletecart(request, pk):
     post = OrderCart.objects.get(id=pk)
     stock = FoodInventory.objects.get(prod_name=post.product_name)
-    updated_quantity = stock.quantity + int(post.quantity)
-    updated_data = {"quantity": updated_quantity}
-    FoodInventory.objects.filter(id=stock.id).update(**updated_data)
-    post.delete()
+    if post.quantity == 1:
+        updated_quantity = stock.quantity + int(post.quantity)
+        updated_data = {"quantity": updated_quantity}
+        FoodInventory.objects.filter(id=stock.id).update(**updated_data)
+        post.delete()
+    else:
+        updated_quantity = stock.quantity + 1
+        cart_quantity = post.quantity - 1
+        updated_data = {"quantity": updated_quantity}
+        updated_data2 = {"quantity": cart_quantity}
+        FoodInventory.objects.filter(id=stock.id).update(**updated_data)
+        OrderCart.objects.filter(id=pk).update(**updated_data2)
     return redirect('cart')
+
+
+def add_quantity(request, pk):
+    post = OrderCart.objects.get(id=pk)
+    stock = FoodInventory.objects.get(prod_name=post.product_name)
+    pre_quantity = post.quantity + 1
+    pre_amount = stock.price * float(pre_quantity)
+    current_quantity = stock.quantity
+    print(pre_quantity)
+    print(current_quantity)
+    if int(current_quantity) != 1:
+        updated_quantity = current_quantity - 1
+        updated_data = {"quantity": updated_quantity}
+        FoodInventory.objects.filter(id=stock.id).update(**updated_data)
+        post.quantity = pre_quantity
+        post.amount = pre_amount
+        post.save()
+        return redirect('cart')
+    else:
+        return redirect("validation1")
+    
 
 def deliveredorder(request, pk):
     OrderProcess.objects.filter(id=pk).update(status='Delivered')
