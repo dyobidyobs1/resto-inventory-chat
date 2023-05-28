@@ -104,6 +104,7 @@ def updatestock(request, pk):
 
     if request.method == 'POST':
         stockform = StockForm(request.POST, request.FILES, instance=post)
+        print(stockform)
         if stockform.is_valid():
             stockform.save()
             return redirect('inventory')
