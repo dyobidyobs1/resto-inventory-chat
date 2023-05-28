@@ -2,18 +2,32 @@
 {% extends 'inventoryapp/base.html' %} 
 {% block content %}
 {% load static %}
-<div class="container">
-  <h1>Admin Home Page</h1>
-  <p>WELCOME, {{request.user}}</p>
-  </div>
   <main>
-  <div class="about-me">
-    <div class="about-me-text">
-      <h2>About Us</h2>
-      <p>Tomguts Food Station is a food business located at Mandaluyong City, Metro Manila and has 9 branches all over Luzon. Products offered are mainly Crispy Pata and Crispy Ulo. It all happened on one night when the business owners were having a drink and thought of making a pulutan food business and then planned everything out. They are famously known for having a Buy 1 Take 1 Crispy Pata and Crispy Ulo around the city.</p>
+    <div class="intro">
+      {% if user.is_authenticated %}
+      <h1>Admin Home Page</h1>
+      <p>WELCOME, {{request.user}}</p>
+      {% else %}
+      <img src="{% static 'images/logo1.png' %}" alt="Logo" height="250px" width="300px">
+      <p>Crispy Pata, Ulo, Atbp</p>
+      {% endif %}
     </div>
-    <img src="{% static 'images/storefront.jpg' %}" alt="logo">
-  </div>
-</main>
-<!-- </div> -->
+    <div class="achievements">
+      <div class="gallery js-flickity"
+        data-flickity-options='{ "wrapAround": true }'>
+        {% for i in inventory %}
+        <div class="gallery-cell">
+          <img src="{{i.image.url}}" alt="meal image">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="about-me">
+      <div class="about-me-text">
+        <h2>About Us</h2>
+        <p>Tomguts Food Station is a food business located at Mandaluyong City, Metro Manila and has 9 branches all over Luzon. Products offered are mainly Crispy Pata and Crispy Ulo. It all happened on one night when the business owners were having a drink and thought of making a pulutan food business and then planned everything out. They are famously known for having a Buy 1 Take 1 Crispy Pata and Crispy Ulo around the city.</p>
+      </div>
+      <img src="{% static 'images/storefront.jpg' %}" alt="logo">
+    </div>
+  </main>
 {% endblock %}
